@@ -3,10 +3,13 @@ class Author:
         self.name = name
         self.books = []
     
-    # adds a book title to the author's list of published books
+    # adds a book title to the author's list of published books, checks if the book has already been published, and prints a message if it has
     def publish(self, title):
-        self.books.append(title)
-        
+        if title in self.books:
+            print(f'{self.name} has already published "{title}".')
+        else:
+            self.books.append(title)
+
     # def __str__(self):
     #     # checks if the author has published any books and returns a string representation of the author and their published books
     #     if self.books:
@@ -25,7 +28,8 @@ class Author:
 def main():
     Shakespeare = Author('William Shakespeare')
     Shakespeare.publish('Hamlet')
-    Shakespeare.publish('Romeo and Juliet')
+    Shakespeare.publish('Romeo and Juliet') 
+    Shakespeare.publish('Romeo and Juliet') # <- prints 'William Shakespeare has already published "Romeo and Juliet".'
 
     print(Shakespeare) # <- prints 'William Shakespeare, Books Published: Hamlet, Romeo and Juliet'
 
